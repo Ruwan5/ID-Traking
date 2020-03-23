@@ -5,14 +5,14 @@ class Details extends StatefulWidget {
   final String value;
   Details({Key key, this.value}) : super(key: key);
 
-  @override 
+  @override
   _Details createState() => _Details();
 }
 
 
 class _Details extends State<Details> {
   String value;
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -25,29 +25,59 @@ class _Details extends State<Details> {
             gradient: LinearGradient(
                begin: Alignment.topRight,
                end: Alignment.bottomLeft,
-               colors: [Colors.blue, Colors.red]
+               colors: [Colors.white, Colors.white]
              )
           ),
-          child: Center(
-            child: Text("${widget.value}",
-            style: TextStyle(
-              fontSize: 48.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white),
-            ),
-            
+        child:Padding(
+          padding: EdgeInsets.all(30.0 ),
+          child: Column(
+            children: <Widget>[
+
+              Container(
+                height: 300,
+                        decoration: BoxDecoration(
+
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                          BoxShadow(
+                           color: Color.fromRGBO(143, 148, 251, 1),
+                           blurRadius: 20.0,
+                           offset: Offset(0, 10)
+                      )
+                    ]
+
+                    ),
+                        child: Center(
+
+                          child: Text("Ruwan",
+                          style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
+                          ),
+                        ),
+              ),
+
+            ],
+
           ),
+
         )
-        
-        // child: Text(
-        //   "ID number: ${widget.value}"),
-        
+
+          // child: Center(
+          //   child: Text("${widget.value}",
+          //   style: TextStyle(
+          //     fontSize: 48.0,
+          //     fontWeight: FontWeight.bold,
+          //     color: Colors.white),
+          //   ),
+
+          // ),
+
+
+        )
+
       ),
-      
+
+
     );
   }
 }
-
-
-
-
