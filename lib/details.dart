@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:idtraking/main.dart';
+import 'Animation/FadeAnimation.dart';
 
 class Details extends StatefulWidget {
   final String value;
@@ -32,7 +33,7 @@ class _Details extends State<Details> {
           padding: EdgeInsets.all(30.0 ),
           child: Column(
             children: <Widget>[
-
+              FadeAnimation(1,
               Container(
                 height: 300,
                         decoration: BoxDecoration(
@@ -48,30 +49,80 @@ class _Details extends State<Details> {
                     ]
 
                     ),
+
                         child: Center(
 
-                          child: Text("Ruwan",
+                          child: Text("${widget.value}",
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
                         ),
               ),
+              ),
+          SizedBox(height: 30.0,),
+          FadeAnimation(1.3,
+          Container(
 
-            ],
+                        height: 80,
+                        decoration: BoxDecoration(
+
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromRGBO(143, 148, 251, 1),
+                              Color.fromRGBO(143, 148, 251, .6)
+                            ]
+                          ),
+
+                        ),
+
+
+                        child: Center(
+
+                          child: Text("Track",
+                          style: TextStyle(color: Colors.white, fontSize:20 , fontWeight: FontWeight.bold),
+                          ),
+                        ),
+
+                      ),
+          ),
+          SizedBox(height: 20.0,),
+          FadeAnimation(1.5,
+          GestureDetector(
+            onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => new Home()));
+            },
+           child:Container(
+
+                        height: 80,
+                        decoration: BoxDecoration(
+
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromRGBO(143, 148, 251, 1),
+                              Color.fromRGBO(143, 148, 251, .6)
+                            ]
+                          ),
+
+                        ),
+
+
+                        child: Center(
+
+                          child: Text("Back",
+                          style: TextStyle(color: Colors.white, fontSize:20 , fontWeight: FontWeight.bold),
+                          ),
+                        ),
+
+                      ),
+          )
+          )
+          ],
 
           ),
 
         )
-
-          // child: Center(
-          //   child: Text("${widget.value}",
-          //   style: TextStyle(
-          //     fontSize: 48.0,
-          //     fontWeight: FontWeight.bold,
-          //     color: Colors.white),
-          //   ),
-
-          // ),
-
 
         )
 
