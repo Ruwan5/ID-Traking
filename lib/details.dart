@@ -4,26 +4,41 @@ import 'Animation/FadeAnimation.dart';
 
 class Details extends StatefulWidget {
   final String value;
-  Details({Key key, this.value}) : super(key: key);
+
+
+  Details({Key key, this.value,}) : super(key: key);
 
   @override
   _Details createState() => _Details();
 
 }
 
-class Process extends Details {
+class Info {
 
 }
 
 class _Details extends State<Details> {
-  String value;
+  String id;
+  String year;
+  String month;
+  String date;
+  String age;
+  String gender;
+
   @override
+
+  void initState() {                   // initialize the NIC number to variable nic
+
+    id = widget.value;
+    return super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
 
       appBar:  AppBar(
         leading: new Container(),
-        title: Text("NIC Info", style: TextStyle(color: Colors.black, fontSize: 25),),
+        title: Text("NIC Information", style: TextStyle(color: Colors.white, fontSize: 25),),
         centerTitle: true,
         // backgroundColor: Colors.transparent,
         // elevation: 0.0,
@@ -63,7 +78,8 @@ class _Details extends State<Details> {
 
                         child: Center(
 
-                          child: Text("${widget.value}",
+                          child: Text("NIC No           :   $id"+ "\n"+
+                                      "Bone Year     :   1996 ",
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
                         ),
