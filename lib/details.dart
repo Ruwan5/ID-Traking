@@ -8,27 +8,38 @@ class Details extends StatefulWidget {
 
   @override
   _Details createState() => _Details();
+
 }
 
+class Process extends Details {
+
+}
 
 class _Details extends State<Details> {
   String value;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("${widget.value}"),
+
+      appBar:  AppBar(
+        leading: new Container(),
+        title: Text("NIC Info", style: TextStyle(color: Colors.black, fontSize: 25),),
+        centerTitle: true,
+        // backgroundColor: Colors.transparent,
+        // elevation: 0.0,
+
       ),
       backgroundColor: Colors.white,
-      body: Center(
+
+      body: Container(
+
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/images/background.png'),
+        //   ),
+        // ),
+        // padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-               begin: Alignment.topRight,
-               end: Alignment.bottomLeft,
-               colors: [Colors.white, Colors.white]
-             )
-          ),
         child:Padding(
           padding: EdgeInsets.all(30.0 ),
           child: Column(
