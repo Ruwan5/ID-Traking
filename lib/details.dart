@@ -13,9 +13,6 @@ class Details extends StatefulWidget {
 
 }
 
-class Info {
-
-}
 
 class _Details extends State<Details> {
   String id;
@@ -27,9 +24,36 @@ class _Details extends State<Details> {
 
   @override
 
-  void initState() {                   // initialize the NIC number to variable nic
+  void initState() {
+    String year1;
 
+    // assign ID value
     id = widget.value;
+
+    // calculate bone year
+      var lst = new List(2);
+      if(id.length == 10){
+        for(var i=0; i<2; i++){
+          lst[i] = id[i];
+        }
+      year1 = lst[0] + lst[1];
+
+      if(lst[0] == "0" || lst[0] == "1") {
+        year = "20"+year1;
+      }
+      else{
+        year = "19"+year1;
+      }
+
+    // calculate bone month
+
+
+    }
+    else{
+      //if id lenth is 12
+    }
+
+
     return super.initState();
   }
 
@@ -79,7 +103,8 @@ class _Details extends State<Details> {
                         child: Center(
 
                           child: Text("NIC No           :   $id"+ "\n"+
-                                      "Bone Year     :   1996 ",
+                                      "Bone Year     :   $year "+"\n"+
+                                      "Bone Month  :   May",
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
                         ),
