@@ -18,7 +18,7 @@ class _Details extends State<Details> {
   String id;
   String year;
   String month;
-  String date;
+  int date;
   String age;
   String gender;
 
@@ -63,16 +63,60 @@ class _Details extends State<Details> {
         month3 = month2;
       }
 
-    // calculate bone month
+    // calculate bone month and date
 
-      switch(month3){
-
+      if(0 < month3 && month3 <= 31){
+        month = "January";
+        date = month3;
+      }
+      if(31 < month3 && month3 <= 60){
+        month = "February";
+        date = month3 - 31;
+      }
+      if(60 < month3 && month3 <= 91){
+        month = "March";
+        date = month3 - 60;
+      }
+      if(91 < month3 && month3 <= 121){
+        month = "April";
+        date = month3 - 91;
+      }
+      if(121 < month3 && month3 <= 152){
+        month = "May";
+        date = month3 - 121;
+      }
+      if(152 < month3 && month3 <= 182){
+        month = "June";
+        date = month3 - 152;
+      }
+      if(182 < month3 && month3 <= 213){
+        month = "July";
+        date = month3 = 182;
+      }
+      if(213 < month3 && month3 <= 244){
+        month = "Augest";
+        date = month3 - 213;
+      }
+      if(244 < month3 && month3 <= 274){
+        month = "September";
+        date = month3 - 244;
+      }
+      if(274 < month3 && month3 <= 305){
+        month = "Octomber";
+        date = month3 - 274;
+      }
+      if(305 < month3 && month3 <= 335){
+        month = "Novermber";
+        date = month3 - 305;
+      }
+      if(335 < month3 && month3 <= 366){
+        month = "December";
+        date = month3 - 335;
       }
 
 
 
 
-      month = month1;
 
 
     }
@@ -132,7 +176,7 @@ class _Details extends State<Details> {
                           child: Text("NIC No           :   $id"+ "\n"+
                                       "Bone Year     :   $year "+"\n"+
                                       "Bone Month  :   $month"+"\n"+
-                                      "Bone Date     :   08"+"\n"+
+                                      "Bone Date     :   $date"+"\n"+
                                       "Gender           :   $gender",
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
