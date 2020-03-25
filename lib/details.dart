@@ -26,14 +26,17 @@ class _Details extends State<Details> {
 
   void initState() {
     String year1;
+    String month1;
+    int month3;
+
 
     // assign ID value
     id = widget.value;
 
     // calculate bone year
-      var lst = new List(2);
+      var lst = new List(10);
       if(id.length == 10){
-        for(var i=0; i<2; i++){
+        for(var i=0; i<10; i++){
           lst[i] = id[i];
         }
       year1 = lst[0] + lst[1];
@@ -45,7 +48,31 @@ class _Details extends State<Details> {
         year = "19"+year1;
       }
 
+
+      month1 = lst[2]+lst[3]+lst[4];
+      int month2 = int.parse(month1);
+
+    //check gender
+
+      if(month2 > 366){
+        gender = "Female";
+        month3 = month2 - 500;
+      }
+      else{
+        gender = "Male";
+        month3 = month2;
+      }
+
     // calculate bone month
+
+      switch(month3){
+
+      }
+
+
+
+
+      month = month1;
 
 
     }
@@ -104,7 +131,9 @@ class _Details extends State<Details> {
 
                           child: Text("NIC No           :   $id"+ "\n"+
                                       "Bone Year     :   $year "+"\n"+
-                                      "Bone Month  :   May",
+                                      "Bone Month  :   $month"+"\n"+
+                                      "Bone Date     :   08"+"\n"+
+                                      "Gender           :   $gender",
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
                         ),
