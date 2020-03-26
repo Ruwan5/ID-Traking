@@ -114,8 +114,7 @@ class _Details extends State<Details> {
         date = month3 - 335;
       }
 
-
-
+    // calculate age
 
 
 
@@ -178,8 +177,10 @@ class _Details extends State<Details> {
                                       "Bone Month  :   $month"+"\n"+
                                       "Bone Date     :   $date"+"\n"+
                                       "Gender           :   $gender",
+
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
+
                         ),
               ),
               ),
