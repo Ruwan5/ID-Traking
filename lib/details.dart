@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:idtraking/main.dart';
 import 'Animation/FadeAnimation.dart';
+import 'package:intl/intl.dart';
 
 class Details extends StatefulWidget {
   final String value;
@@ -19,8 +20,10 @@ class _Details extends State<Details> {
   String year;
   String month;
   int date;
-  String age;
+  int age;
+  var dob;
   String gender;
+
 
   @override
 
@@ -28,6 +31,8 @@ class _Details extends State<Details> {
     String year1;
     String month1;
     int month3;
+    int month4;
+    int currentYear;
 
 
     // assign ID value
@@ -67,55 +72,73 @@ class _Details extends State<Details> {
 
       if(0 < month3 && month3 <= 31){
         month = "January";
+        month4 = 01;
         date = month3;
       }
       if(31 < month3 && month3 <= 60){
         month = "February";
+        month4 = 02;
         date = month3 - 31;
       }
       if(60 < month3 && month3 <= 91){
         month = "March";
+        month4 = 03;
         date = month3 - 60;
       }
       if(91 < month3 && month3 <= 121){
         month = "April";
+        month4 = 04;
         date = month3 - 91;
       }
       if(121 < month3 && month3 <= 152){
         month = "May";
+        month4 = 05;
         date = month3 - 121;
       }
       if(152 < month3 && month3 <= 182){
         month = "June";
+        month4 = 06;
         date = month3 - 152;
       }
       if(182 < month3 && month3 <= 213){
         month = "July";
+        month4 = 07;
         date = month3 = 182;
       }
       if(213 < month3 && month3 <= 244){
         month = "Augest";
+        month4 = 08;
         date = month3 - 213;
       }
       if(244 < month3 && month3 <= 274){
         month = "September";
+        month4 = 09;
         date = month3 - 244;
       }
       if(274 < month3 && month3 <= 305){
         month = "Octomber";
+        month4 = 10;
         date = month3 - 274;
       }
       if(305 < month3 && month3 <= 335){
         month = "Novermber";
+        month4 = 11;
         date = month3 - 305;
       }
       if(335 < month3 && month3 <= 366){
         month = "December";
+        month4 = 12;
         date = month3 - 335;
       }
 
     // calculate age
-
+      //get current date
+     var dob1 = "$year/$month4/$date";
+     dob = dob1;
+      var yearInt = int.parse(year);  // converting string to int
+      var now = new DateTime.now();
+      currentYear = now.year;
+      age = currentYear - yearInt;
 
 
     }
@@ -175,8 +198,10 @@ class _Details extends State<Details> {
                           child: Text("NIC No           :   $id"+ "\n"+
                                       "Bone Year     :   $year "+"\n"+
                                       "Bone Month  :   $month"+"\n"+
-                                      "Bone Date     :   $date"+"\n"+
-                                      "Gender           :   $gender",
+                                      "Bone Date     :   $date"+"\n"
+                                      "DOB                :  $dob"+ "\n"+
+                                      "Gender           :   $gender"+"\n"+
+                                      "Age                 :   $age ",
 
                           style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
                           ),
