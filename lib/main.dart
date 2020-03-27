@@ -98,9 +98,30 @@ class _MyHomepageState extends State<Home> {
 
                           ),
                           controller: nicNumberController,
-                          validator: (value){
+                          validator: (var value){
                             if(value.isEmpty) {
-                              return 'Enter your NIC number';
+                              return 'Enter NIC number';
+                            }
+                            else if(value.length != 10 && value.length != 12){
+                              return 'NIC must be 10 or 12 characters';
+                            }
+                            else {
+                              if(value.length == 10){
+                                var validCharactors = RegExp(r'^[vV0-9]+$');
+                                if(!validCharactors.hasMatch(value) ){
+
+                                  return 'Invalid NIC number';
+
+
+                                }
+                                if(!value.endsWith('v') && !value.endsWith('V') ){
+                                  return 'Invalid NIC number';
+                                }
+
+                              }
+                              if(value.length == 12){
+
+                              }
                             }
                             return null;
                           },
