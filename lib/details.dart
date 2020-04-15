@@ -158,7 +158,7 @@ class _Details extends State<Details> {
       //calculate bone year
 
       year1 = lst[0] + lst[1] + lst[2]+ lst[3];
-
+      year = year1;
       // check gender
 
       month1 = lst[4]+lst[5]+lst[6];
@@ -240,7 +240,7 @@ class _Details extends State<Details> {
       //get current date
      var dob1 = "$year/$month4/$date";
      dob = dob1;
-      var yearInt = int.parse(year);  // converting string to int
+      var yearInt = int.parse(year1);  // converting string to int
       var now = new DateTime.now();
       currentYear = now.year;
       age = currentYear - yearInt;
@@ -274,7 +274,7 @@ class _Details extends State<Details> {
             children: <Widget>[
               FadeAnimation(1,
               Container(
-                height: 300,
+                height: 180,
                         decoration: BoxDecoration(
 
                           borderRadius: BorderRadius.circular(10),
@@ -299,7 +299,7 @@ class _Details extends State<Details> {
                                       "Gender           :   $gender"+"\n"+
                                       "Age                 :   $age ",
 
-                          style: TextStyle(color: Colors.black, fontSize:20 , fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.black, fontSize:17 , fontWeight: FontWeight.bold),
                           ),
 
                         ),
@@ -309,7 +309,7 @@ class _Details extends State<Details> {
           FadeAnimation(1.3,
           Container(
 
-                        height: 80,
+                        height: 60,
                         decoration: BoxDecoration(
 
                           borderRadius: BorderRadius.circular(10),
@@ -341,7 +341,7 @@ class _Details extends State<Details> {
             },
            child:Container(
 
-                        height: 80,
+                        height: 60,
                         decoration: BoxDecoration(
 
                           borderRadius: BorderRadius.circular(10),
