@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:idtraking/main.dart';
 import 'Animation/FadeAnimation.dart';
-import 'package:intl/intl.dart';
+
 
 class Details extends StatefulWidget {
   final String value;
@@ -39,11 +39,14 @@ class _Details extends State<Details> {
     id = widget.value;
 
     // calculate bone year
+
+    if(id.length == 10){
+
       var lst = new List(10);
-      if(id.length == 10){
-        for(var i=0; i<10; i++){
-          lst[i] = id[i];
-        }
+      for(var i=0; i<10; i++){
+        lst[i] = id[i];
+      }
+
       year1 = lst[0] + lst[1];
 
       if(lst[0] == "0" || lst[0] == "1") {
@@ -142,8 +145,107 @@ class _Details extends State<Details> {
 
 
     }
-    else{
-      //if id lenth is 12
+
+    //if id lenth is 12
+
+    if(id.length == 12){
+
+      var lst = new List(12);
+      for(var i=0; i<12; i++){
+          lst[i] = id[i];
+      }
+
+      //calculate bone year
+
+      year1 = lst[0] + lst[1] + lst[2]+ lst[3];
+
+      // check gender
+
+      month1 = lst[4]+lst[5]+lst[6];
+      int month2 = int.parse(month1);
+
+      if(month2 > 366){
+        gender = "Female";
+        month3 = month2 - 500;
+      }
+      else{
+        gender = "Male";
+        month3 = month2;
+      }
+
+      //calculate bone month
+
+      if(0 < month3 && month3 <= 31){
+        month = "January";
+        month4 = 01;
+        date = month3;
+      }
+      if(31 < month3 && month3 <= 60){
+        month = "February";
+        month4 = 02;
+        date = month3 - 31;
+      }
+      if(60 < month3 && month3 <= 91){
+        month = "March";
+        month4 = 03;
+        date = month3 - 60;
+      }
+      if(91 < month3 && month3 <= 121){
+        month = "April";
+        month4 = 04;
+        date = month3 - 91;
+      }
+      if(121 < month3 && month3 <= 152){
+        month = "May";
+        month4 = 05;
+        date = month3 - 121;
+      }
+      if(152 < month3 && month3 <= 182){
+        month = "June";
+        month4 = 06;
+        date = month3 - 152;
+      }
+      if(182 < month3 && month3 <= 213){
+        month = "July";
+        month4 = 07;
+        date = month3 = 182;
+      }
+      if(213 < month3 && month3 <= 244){
+        month = "Augest";
+        month4 = 08;
+        date = month3 - 213;
+      }
+      if(244 < month3 && month3 <= 274){
+        month = "September";
+        month4 = 09;
+        date = month3 - 244;
+      }
+      if(274 < month3 && month3 <= 305){
+        month = "Octomber";
+        month4 = 10;
+        date = month3 - 274;
+      }
+      if(305 < month3 && month3 <= 335){
+        month = "Novermber";
+        month4 = 11;
+        date = month3 - 305;
+      }
+      if(335 < month3 && month3 <= 366){
+        month = "December";
+        month4 = 12;
+        date = month3 - 335;
+      }
+
+      // calculate age
+      //get current date
+     var dob1 = "$year/$month4/$date";
+     dob = dob1;
+      var yearInt = int.parse(year);  // converting string to int
+      var now = new DateTime.now();
+      currentYear = now.year;
+      age = currentYear - yearInt;
+
+
     }
 
 
@@ -152,7 +254,7 @@ class _Details extends State<Details> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-
+      resizeToAvoidBottomInset : false,
       appBar:  AppBar(
         leading: new Container(),
         title: Text("NIC Information", style: TextStyle(color: Colors.white, fontSize: 25),),
@@ -165,12 +267,6 @@ class _Details extends State<Details> {
 
       body: Container(
 
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('assets/images/background.png'),
-        //   ),
-        // ),
-        // padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
         child: Container(
         child:Padding(
           padding: EdgeInsets.all(30.0 ),

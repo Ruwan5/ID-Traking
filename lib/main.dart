@@ -32,13 +32,14 @@ class _MyHomepageState extends State<Home> {
 
         return Scaffold(
           backgroundColor: Colors.white,
+          resizeToAvoidBottomInset : false,
           body: Container(
 
             child: Column(
 
               children: <Widget>[
                 FadeAnimation(1, Container(
-                  height: 400,
+                  height: 324,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/background.png'),
@@ -56,7 +57,7 @@ class _MyHomepageState extends State<Home> {
                 ),
               )),
               Padding(
-                padding: EdgeInsets.all(30.0 ),
+                padding: EdgeInsets.all(21.0 ),
 
                 child: Form(
                   key: _formkey,
@@ -64,7 +65,7 @@ class _MyHomepageState extends State<Home> {
                     children: <Widget>[
 
                  FadeAnimation(1.3,Container(
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(0),
 
                   decoration: BoxDecoration(
 
@@ -86,7 +87,7 @@ class _MyHomepageState extends State<Home> {
 
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
                           border:Border(bottom: BorderSide(color: Colors.grey[100]))
                         ),
@@ -98,32 +99,43 @@ class _MyHomepageState extends State<Home> {
 
                           ),
                           controller: nicNumberController,
-                          validator: (var value){
+                          validator: ( value){
                             if(value.isEmpty) {
                               return 'Enter NIC number';
                             }
-                            else if(value.length != 10 && value.length != 12){
-                              return 'NIC must be 10 or 12 characters';
+                            if(value.length == 10){
+                                var validCharactors = RegExp(r'^[0-9]{9}[vV]{1}$');
+                                if(validCharactors.hasMatch(value) ){
+                                  if(value.endsWith('v') || value.endsWith('V') ){
+                                    return null;
+                                  }
+                                  else{
+                                    return 'Invalid NIC number';
+                                  }
+
+                                }
+                                else{
+                                  return 'Invalid NIC number';
+                                }
+
+
+                            }
+                            if(value.length == 12){
+                                var validnumbers = RegExp(r'^[0-9]{12}$');
+                                if(validnumbers.hasMatch(value)){
+
+                                  return null;
+                                }
+                                else{
+                                  return "Invalid NIC number";
+                                }
                             }
                             else {
-                              if(value.length == 10){
-                                var validCharactors = RegExp(r'^[vV0-9]+$');
-                                if(!validCharactors.hasMatch(value) ){
+                              return 'NIC must be 10 or 12 characters';
 
-                                  return 'Invalid NIC number';
-
-
-                                }
-                                if(!value.endsWith('v') && !value.endsWith('V') ){
-                                  return 'Invalid NIC number';
-                                }
-
-                              }
-                              if(value.length == 12){
-
-                              }
                             }
-                            return null;
+
+
                           },
                           onChanged: (value) {
 
