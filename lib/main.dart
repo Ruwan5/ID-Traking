@@ -26,11 +26,33 @@ class Home extends StatefulWidget {
 class _MyHomepageState extends State<Home> {
   var nicNumberController = TextEditingController();
 
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit from Id Traking'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    )) ?? false;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final _formkey = GlobalKey<FormState>();
-
-        return Scaffold(
+    return new WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset : false,
           body: Container(
@@ -195,6 +217,11 @@ class _MyHomepageState extends State<Home> {
         ],
         ),
       ),
+    ),
+
     );
+
   }
+
+
 }
