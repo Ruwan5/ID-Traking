@@ -31,7 +31,7 @@ class _MyHomepageState extends State<Home> {
       context: context,
       builder: (context) => new AlertDialog(
         title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit from Id Traking'),
+        content: new Text('Do you want to exit from Id Traking?'),
         actions: <Widget>[
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(false),

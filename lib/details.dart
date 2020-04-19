@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:idtraking/main.dart';
 import 'Animation/FadeAnimation.dart';
+import 'package:idtraking/map.dart';
 
 
 class Details extends StatefulWidget {
@@ -307,7 +308,12 @@ class _Details extends State<Details> {
               ),
           SizedBox(height: 30.0,),
           FadeAnimation(1.3,
-          Container(
+          GestureDetector(
+            onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => new Map()));
+            },
+            child: Container(
 
                         height: 60,
                         decoration: BoxDecoration(
@@ -331,6 +337,9 @@ class _Details extends State<Details> {
                         ),
 
                       ),
+          )
+
+
           ),
           SizedBox(height: 20.0,),
           FadeAnimation(1.5,
